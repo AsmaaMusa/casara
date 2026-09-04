@@ -1,6 +1,62 @@
 @import "tailwindcss";
 
-@theme{
+@theme {
 
-    
+    --font-inter: "inter";
+    --font-heading: "EB Garamond";
+    --font-logo: "Ibarra Real Nova", serif;
+
+    --color-primary-warm: #29445A;
+    --color-test-red: #FF0000;
+    --color-brand-bg: #FAF8F5;
+    /* لون البيج المأخوذ من الفيجما */
+}
+
+@layer base {
+    body {
+        font-family: var(--font-inter);
+        background-color: var(--color-brand-bg);
+    }
+
+    h1 {
+        font-size: 3rem;
+        line-height: 1.2rem;
+        font-weight: 500;
+
+    }
+
+    h2 {
+        font-size: 2rem;
+        line-height: 1.2rem;
+        font-weight: 500;
+
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        line-height: 1.2rem;
+        font-weight: 500;
+
+    }
+
+    .container {
+        @apply mx-auto;
+        @apply px-2;
+        @apply md:px-0;
+    }
+
+}
+
+@utility navlink {
+
+
+    @apply text-[15px] font-bold hover:text-primary-warm transition-all duration-300 opacity-60;
+
+
+}
+
+@utility row {
+
+    @apply flex items-center;
+
 }

@@ -8,13 +8,14 @@
       "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-amber-600: oklch(66.6% 0.179 58.318);
     --color-white: #fff;
     --spacing: 0.25rem;
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
+    --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-bold: 700;
+    --radius-lg: 0.5rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -192,6 +193,15 @@
       max-width: 96rem;
     }
   }
+  .custom-container {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1280px;
+    padding-inline: calc(var(--spacing) * 6);
+    @media (width >= 48rem) {
+      padding-inline: 0px;
+    }
+  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -211,14 +221,32 @@
   .table {
     display: table;
   }
+  .h-screen {
+    height: 100vh;
+  }
+  .w-full {
+    width: 100%;
+  }
   .border-collapse {
     border-collapse: collapse;
   }
   .resize {
     resize: both;
   }
+  .flex-col {
+    flex-direction: column;
+  }
   .justify-between {
     justify-content: space-between;
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .gap-2\.5 {
+    gap: calc(var(--spacing) * 2.5);
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
   }
   .gap-6 {
     gap: calc(var(--spacing) * 6);
@@ -226,12 +254,30 @@
   .gap-6\.25 {
     gap: calc(var(--spacing) * 6.25);
   }
+  .gap-12 {
+    gap: calc(var(--spacing) * 12);
+  }
   .gap-15 {
     gap: calc(var(--spacing) * 15);
+  }
+  .gap-\[14\.9px\] {
+    gap: 14.9px;
+  }
+  .gap-\[16px\] {
+    gap: 16px;
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg);
   }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
+  }
+  .border-\[\#C4C6CD\] {
+    border-color: #C4C6CD;
+  }
+  .bg-primary-warm {
+    background-color: var(--color-primary-warm);
   }
   .bg-white {
     background-color: var(--color-white);
@@ -239,8 +285,17 @@
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
   }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+  .py-3\.25 {
+    padding-block: calc(var(--spacing) * 3.25);
+  }
   .py-5 {
     padding-block: calc(var(--spacing) * 5);
+  }
+  .pb-8 {
+    padding-bottom: calc(var(--spacing) * 8);
   }
   .font-inter {
     font-family: var(--font-inter);
@@ -271,23 +326,65 @@
   .text-\[11px\] {
     font-size: 11px;
   }
+  .text-\[15px\] {
+    font-size: 15px;
+  }
+  .text-\[16px\] {
+    font-size: 16px;
+  }
+  .text-\[36px\] {
+    font-size: 36px;
+  }
+  .leading-4 {
+    --tw-leading: calc(var(--spacing) * 4);
+    line-height: calc(var(--spacing) * 4);
+  }
+  .leading-6 {
+    --tw-leading: calc(var(--spacing) * 6);
+    line-height: calc(var(--spacing) * 6);
+  }
   .leading-\[16\.5px\] {
     --tw-leading: 16.5px;
     line-height: 16.5px;
+  }
+  .leading-\[39\.6px\] {
+    --tw-leading: 39.6px;
+    line-height: 39.6px;
   }
   .font-medium {
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
   }
+  .font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
+  }
+  .tracking-\[-0\.72px\] {
+    --tw-tracking: -0.72px;
+    letter-spacing: -0.72px;
+  }
+  .tracking-\[\.55px\] {
+    --tw-tracking: .55px;
+    letter-spacing: .55px;
+  }
   .tracking-\[0\.88px\] {
     --tw-tracking: 0.88px;
     letter-spacing: 0.88px;
+  }
+  .text-\[\#635E55\] {
+    color: #635E55;
+  }
+  .text-\[\#43474C\] {
+    color: #43474C;
   }
   .text-\[\#491700\] {
     color: #491700;
   }
   .text-primary-warm {
     color: var(--color-primary-warm);
+  }
+  .text-white {
+    color: var(--color-white);
   }
   .underline {
     text-decoration-line: underline;
@@ -296,12 +393,59 @@
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
+  .transition {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  @media (hover: hover) {
+    .hover\:bg-primary-warm\/80:hover {
+      background-color: color-mix(in srgb, #29445A 80%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-primary-warm\/80:hover {
+        background-color: color-mix(in oklab, var(--color-primary-warm) 80%, transparent);
+      }
+    }
+  }
+  .active\:scale-90:active {
+    --tw-scale-x: 90%;
+    --tw-scale-y: 90%;
+    --tw-scale-z: 90%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
   @media (width >= 48rem) {
+    .md\:row {
+      display: flex;
+      align-items: center;
+    }
     .md\:block {
       display: block;
     }
     .md\:hidden {
       display: none;
+    }
+    .md\:w-auto {
+      width: auto;
+    }
+    .md\:flex-row {
+      flex-direction: row;
+    }
+    .md\:gap-8 {
+      gap: calc(var(--spacing) * 8);
+    }
+  }
+  @media (width >= 64rem) {
+    .lg\:text-\[64px\] {
+      font-size: 64px;
+    }
+    .lg\:leading-\[70\.4px\] {
+      --tw-leading: 70.4px;
+      line-height: 70.4px;
+    }
+    .lg\:tracking-\[-1\.28px\] {
+      --tw-tracking: -1.28px;
+      letter-spacing: -1.28px;
     }
   }
 }
@@ -325,9 +469,12 @@
     line-height: 1.2rem;
     font-weight: 500;
   }
+  button {
+    cursor: pointer;
+  }
   .container {
     margin-inline: auto;
-    padding-inline: calc(var(--spacing) * 2);
+    padding-inline: calc(var(--spacing) * 6);
     @media (width >= 48rem) {
       padding-inline: 0px;
     }
@@ -359,6 +506,21 @@
   inherits: false;
   initial-value: solid;
 }
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -368,6 +530,9 @@
       --tw-leading: initial;
       --tw-tracking: initial;
       --tw-outline-style: solid;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
     }
   }
 }
